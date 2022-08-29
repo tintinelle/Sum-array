@@ -1,0 +1,10 @@
+* {
+    border: 1px solid slategray;
+}
+.main__sort {
+    min-height: 5rem;
+}
+
+.main__sum {
+    min-height: 5rem;
+}
