@@ -6,20 +6,16 @@ const resultBtn = document.getElementById('resultBtn');
 let sum = 0;
 let sortedNumbers = [];
 
-const compareNumbers = (a, b) => {
-    return a - b;
-};
-
-const formArray = () => {
+const processArray = () => {
     const numbers = [];
 
     document.getElementById('sortedArray').innerHTML = 'Здесь будет отсортированный по возрастанию массив';
     document.getElementById('sumOfNum').innerHTML = 'Здесь будет сумма элементов массива';
 
     while (true) {
-        const num = prompt('Пожалуйста, введите число и нажмите "Продолжить" для ввода следующего числа');
+        let num = prompt('Пожалуйста, введите число и нажмите "Продолжить" для ввода следующего числа');
 
-        if (isFinite(num) && num !== '' && num !== null) {
+        if (num == +num && num !== '' && num !== null) {
             numbers.push(+num);
         } else {
             alert('Введено не числовое значение, окончание ввода');
@@ -29,7 +25,9 @@ const formArray = () => {
 
     // console.log(numbers);
 
-    sortedNumbers = numbers.sort(compareNumbers);
+    sortedNumbers = numbers.sort((a, b) => {
+        return a - b;
+    });
 
     // console.log(sortedNumbers);
 
@@ -40,10 +38,10 @@ const formArray = () => {
     return (sum);
 };
 
-const getResult = () => {
+const showResult = () => {
     document.getElementById('sortedArray').innerHTML = `Ваш отсортированный по возрастанию массив: ${sortedNumbers}`;
     document.getElementById('sumOfNum').innerHTML = `Сумма элементов равна: ${sum}`;
 };
 
-startBtn.addEventListener('click', formArray);
-resultBtn.addEventListener('click', getResult);
+startBtn.addEventListener('click', processArray);
+resultBtn.addEventListener('click', showResult);
